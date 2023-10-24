@@ -25,7 +25,7 @@ body {
   width: 325px;
   height: 700px;
   border-radius: 1.5em;
-  /* background: black; */
+  background: black;
   box-shadow: 2px 0px 53px 1px var(--purple);
   position: absolute;
   top: 50%;
@@ -55,10 +55,8 @@ body {
   width: 200px;
   background-size: cover;
   background-position: center;
-  background-image: url(assets/img/Akhiyaan.jpg);
   border-radius: 50%;
   box-shadow: 2px 0px 53px 15px var(--purple);
-  background: blur(2rem);;
   animation: rotate 15s linear infinite;
 }
 
@@ -166,9 +164,9 @@ body {
   font-family: cursive;
 }
 
-i.fa-volume-down,
-i.fa-volume-up {
-  padding: 10px;
+i.fa-volume-high,
+i.fa-volume-xmark{
+  cursor: pointer;
 }
 
 i.fa-step-forward,

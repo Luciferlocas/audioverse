@@ -18,8 +18,8 @@
     </div>
     <div class="artist">
       <div>
-        <marquee scrollamount="3"><div class="track-name"></div>Track Name</marquee>
-        <div class="track-artist">Artist</div>
+        <marquee scrollamount="3"><div class="track-name"></div></marquee>
+        <div class="track-artist"></div>
       </div>
       <div>
         <i class="fa-regular fa-heart like"></i>
@@ -27,28 +27,28 @@
     </div>
 
     <div class="buttons">
-      <div class="prev-track">
+      <div class="prev-track" onclick="prevTrack()">
         <i class="fa fa-step-backward fa-2x"></i>
       </div>
-      <div class="playpause-track">
+      <div class="playpause-track" onclick="playpauseTrack()">
         <i class="fa fa-play-circle fa-5x"></i>
       </div>
-      <div class="next-track">
+      <div class="next-track" onclick="nextTrack()">
         <i class="fa fa-step-forward fa-2x"></i>
       </div>
     </div>
 
     <div class="slider_container">
       <div class="current-time">00:00</div>
-      <input type="range" min="1" max="100" value="0" class="seek_slider">
+      <input type="range" min="1" max="100" value="0" class="seek_slider" onchange="seekTo()">
       <div class="total-duration">00:00</div>
     </div>
 
     <div class="slider_container">
       <div class="mute">
-        <i class="fa-solid fa-volume-high"></i>
+        <i class="fa-solid fa-volume-high" onclick="mute()"></i>
       </div>
-      <input type="range" min="0" max="100" value="99" class="volume_slider">
+      <input type="range" min="0" max="100" value="99" class="volume_slider" onchange="setVolume()">
     </div>
   </div>
   </div>
