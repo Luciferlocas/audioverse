@@ -1,13 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audioverse</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audioverse</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/f57def13fc.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    
-    <script src="script.js"></script>
+  <div class="container">
+    <div class="details">
+      <div class="name">audioverse</div>
+      <div class="track-art"></div>
+    </div>
+    <div class="artist">
+      <div>
+        <marquee scrollamount="3"><div class="track-name"></div>Track Name</marquee>
+        <div class="track-artist">Artist</div>
+      </div>
+      <div>
+        <i class="fa-regular fa-heart like"></i>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <div class="prev-track">
+        <i class="fa fa-step-backward fa-2x"></i>
+      </div>
+      <div class="playpause-track">
+        <i class="fa fa-play-circle fa-5x"></i>
+      </div>
+      <div class="next-track">
+        <i class="fa fa-step-forward fa-2x"></i>
+      </div>
+    </div>
+
+    <div class="slider_container">
+      <div class="current-time">00:00</div>
+      <input type="range" min="1" max="100" value="0" class="seek_slider">
+      <div class="total-duration">00:00</div>
+    </div>
+
+    <div class="slider_container">
+      <div class="mute">
+        <i class="fa-solid fa-volume-high"></i>
+      </div>
+      <input type="range" min="0" max="100" value="99" class="volume_slider">
+    </div>
+  </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
