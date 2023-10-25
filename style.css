@@ -192,3 +192,64 @@ i.fa-heart:hover{
   font-size: 2.2rem;
   opacity: 1;
 }
+
+.playList{
+  background: black;
+  z-index: 10;
+  width: 325px;
+  height: 700px;
+  border-radius: 1.5em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+
+.playList h1{
+  font-size: 2rem;
+  color: var(--purple);
+  font-family: cursive;
+  text-align: center;
+  margin: 1em;
+}
+
+i.close{
+  color: var(--purple);
+  font-size: 2rem;
+}
+
+.playItem{
+  margin: 1.5em;
+  color: var(--white);
+}
+
+.play-track-name{
+  font-size: 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.8rem;
+  cursor: pointer;
+}
+
+i.fa-bars,
+i.fa-xmark{
+  font-size: 1.5rem;
+  margin-left: 2rem;
+  cursor: pointer;
+  color: var(--white);
+}
+
+.play-track-artist{
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0 0 1rem 0.8rem;
+}
+
+.items{
+  border-radius: 10px;
+  box-shadow: 2px 0px 53px 2px var(--purple);
+}
+
+hr{
+  border: 1px solid var(--purple);
+}

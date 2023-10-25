@@ -22,7 +22,7 @@
         <div class="track-artist"></div>
       </div>
       <div>
-        <i class="fa-regular fa-heart like"></i>
+        <i class="fa-regular fa-heart like" onclick="addplaylist()"></i>
       </div>
     </div>
 
@@ -49,6 +49,20 @@
         <i class="fa-solid fa-volume-high" onclick="mute()"></i>
       </div>
       <input type="range" min="0" max="100" value="99" class="volume_slider" onchange="setVolume()">
+      <div class="playlist" onclick="playlistDisplay()">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </div>
+  <div class="playList">
+    <div>
+      <h1>Playlist<i class="fa-solid fa-xmark close" onclick="closelist()"></i></h1>
+    </div>
+    <div class="playItem">
+      <div class="items">
+        <div class="play-track-name"></div>
+        <div class="play-track-artist"></div>
+      </div>
     </div>
   </div>
   </div>

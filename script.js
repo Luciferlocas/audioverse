@@ -22,13 +22,21 @@ let updateTimer;
 
 let curr_track = document.createElement("audio");
 
+let playList = document.querySelector(".playlist");
+let playListItem = document.querySelector(".playList");
+let closeList = document.querySelector(".close");
+
+let items = document.querySelector(".items");
+let playtrack_name = document.querySelector(".play-track-name");
+let playtrack_artist = document.querySelector(".play-track-artist");
+
 //array of tracks------------------------------------------------------
 
 let track_list = [
   {
     name: "Choo lo",
     artist: "The Local Train",
-    cover: "Choo lo",
+    cover: "Choo_lo",
     src: "Choo lo",
   },
   {
@@ -40,7 +48,7 @@ let track_list = [
   {
     name: "Bella Ciao",
     artist: "Marco Calliari",
-    cover: "Bella Ciao",
+    cover: "Bella_Ciao",
     src: "Bella Ciao",
   },
   {
@@ -52,43 +60,43 @@ let track_list = [
   {
     name: "At My Worst",
     artist: "Pink Sweat$",
-    cover: "At My Worst",
+    cover: "At_My_Worst",
     src: "At My Worst",
   },
   {
     name: "Der Lagi Lekin",
     artist: "Shankar Mahadevan",
-    cover: "Der Lagi Lekin",
+    cover: "Der_Lagi_Lekin",
     src: "Der Lagi Lekin",
   },
   {
     name: "Dil deewana",
     artist: "Sagar Kalra",
-    cover: "Dil deewana",
+    cover: "Dil_deewana",
     src: "Dil deewana",
   },
   {
     name: "Pehla Nasha Pehla khumar",
     artist: "Sadhana Sargam and Udit Narayan",
-    cover: "Pehla Nasha Pehla khumar",
+    cover: "Pehla_Nasha_Pehla_khumar",
     src: "Pehla Nasha Pehla khumar",
   },
   {
     name: "Until I Found You",
     artist: "Stephen Sanchez Ft. Em Beihold",
-    cover: "Until I Found You",
+    cover: "Until_I_Found_You",
     src: "Until I Found You",
   },
   {
     name: "Yeh Raaten Yeh Mausam",
     artist: "Stephen Sanchez Ft. Em Beihold",
-    cover: "Yeh Raaten Yeh Mausam",
+    cover: "Yeh_Raaten_Yeh_Mausam",
     src: "Yeh Raaten Yeh Mausam",
   },
   {
     name: "Yeh Vaada Raha",
     artist: "Stephen Sanchez Ft. Em Beihold",
-    cover: "Yeh Vaada Raha",
+    cover: "Yeh_Vaada_Raha",
     src: "Yeh Vaada Raha",
   },
 ];
@@ -237,3 +245,36 @@ function resetValues() {
   total_duration.textContent = "00:00";
   seek_slider.value = 0;
 }
+
+//creating song array--------------------------------------------------------
+
+let playlist = [];
+function addplaylist(){
+  playlist.push(track_list[track_index]);
+}
+
+//hidding playlist------------------------------------------------------------
+
+var pclick = true;
+function closelist(){
+  playListItem.style.visibility = "hidden";
+  pclick = true;
+}
+
+//displaying the playlist------------------------------------------------------
+
+function playlistDisplay() {
+  if (pclick) {
+    pclick = false;
+    playListItem.style.visibility = "visible";
+  }
+
+  let playlistFilter = [...new Set(playlist)]; // removing duplicates----------
+  let List = "";
+  playlistFilter.map(function(song){
+    List += `<div class="play-track-name">${playtrack_name.textContent = song.name}</div>
+            <div class="play-track-artist">${playtrack_artist.textContent = song.artist}</div>
+            <hr>`
+    items.innerHTML = List;
+  });
+}   
