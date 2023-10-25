@@ -246,8 +246,15 @@ i.fa-xmark{
 }
 
 .items{
+  max-height: 530px;
   border-radius: 10px;
   box-shadow: 2px 0px 53px 2px var(--purple);
+  overflow-y: scroll;
+  
+}
+
+.items::-webkit-scrollbar{
+  display: none;
 }
 
 hr{
