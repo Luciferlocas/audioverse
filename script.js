@@ -22,13 +22,18 @@ let updateTimer;
 
 let curr_track = document.createElement("audio");
 
-let playList = document.querySelector(".playlist");
 let playListItem = document.querySelector(".playList");
+let songItem = document.querySelector(".songList");
 let closeList = document.querySelector(".close");
 
 let items = document.querySelector(".items");
+let sitems = document.querySelector(".songs");
 let playtrack_name = document.querySelector(".play-track-name");
 let playtrack_artist = document.querySelector(".play-track-artist");
+
+let songtrack_name = document.querySelector(".song-track-name");
+let songtrack_artist = document.querySelector(".song-track-artist");
+let songAdded = document.querySelector(".popup");
 
 //array of tracks------------------------------------------------------
 
@@ -137,21 +142,34 @@ function pauseTrack() {
   playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
 }
 
-//keypress playpause------------------------------------------------------
+//keypress playpause and next prev------------------------------------------------------
 
 function playPause(e) {
-  if (e.keyCode !== 32) {
-    return;
-  }
-  if (curr_track.paused) {
-    curr_track.play();
-    playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
-  } else {
-    curr_track.pause();
-    playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
+  if (e.keyCode === 32) {
+    if (!isPlaying) {
+      playTrack();
+    } else {
+      pauseTrack();
+    }
   }
 }
 document.addEventListener("keypress", playPause);
+
+function next(t) {
+  if (t.keyCode !== 39) {
+    return;
+  }
+  nextTrack();
+}
+document.addEventListener("keydown", next);
+
+function Prev(s) {
+  if (s.keyCode !== 37) {
+    return;
+  }
+  prevTrack();
+}
+document.addEventListener("keyup", Prev);
 
 //next button -----------------------------------------------------------
 
@@ -249,14 +267,19 @@ function resetValues() {
 //creating song array--------------------------------------------------------
 
 let playlist = [];
-function addplaylist(){
+function addplaylist() {
   playlist.push(track_list[track_index]);
+  songAdded.style.visibility = "visible";
+  setTimeout(() => {
+    songAdded.style.visibility = "hidden";
+  }, 1500);
 }
 
 //hidding playlist------------------------------------------------------------
 
 var pclick = true;
-function closelist(){
+function closelist() {
+  songItem.style.visibility = "hidden";
   playListItem.style.visibility = "hidden";
   pclick = true;
 }
@@ -271,10 +294,35 @@ function playlistDisplay() {
 
   let playlistFilter = [...new Set(playlist)]; // removing duplicates----------
   let List = "";
-  playlistFilter.map(function(song){
-    List += `<div class="play-track-name">${playtrack_name.textContent = song.name}</div>
-            <div class="play-track-artist">${playtrack_artist.textContent = song.artist}</div>
-            <hr>`
+  playlistFilter.map(function (play) {
+    List += `<div class="play-track-name">${(playtrack_name.textContent =
+      play.name)}</div>
+            <div class="play-track-artist">${(playtrack_artist.textContent =
+              play.artist)}</div>
+            <hr>`;
     items.innerHTML = List;
   });
-}   
+}
+
+// displaying song list ----------------------------------------------------------
+function songDisplay() {
+  if (pclick) {
+    pclick = false;
+    songItem.style.visibility = "visible";
+  }
+  let Songs = "";
+  for (let i = 0; i < track_list.length; i++) {
+    Songs += `<div class="song-track-name" id = "${i}" onclick="displayName()">${(songtrack_name.textContent =
+      track_list[i].name)}</div>
+            <div class="song-track-artist">${(songtrack_artist.textContent =
+              track_list[i].artist)}</div>
+            <hr>`;
+  }
+  console.log(Songs);
+  sitems.innerHTML = Songs;
+}
+
+// function displayName() {
+//   let sindex = songtrack_name.getAttribute("id");
+//   console.log(sindex);
+// }

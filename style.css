@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: rgba(47, 45, 58, 255);
+  background-color: #14141c;
 }
 
 :root{
@@ -56,7 +56,7 @@ body {
   background-size: cover;
   background-position: center;
   border-radius: 50%;
-  box-shadow: 2px 0px 53px 15px var(--purple);
+  box-shadow: 2px 0px 53px 10px var(--purple);
   animation: rotate 15s linear infinite;
 }
 
@@ -130,8 +130,6 @@ body {
 
 .seek_slider::-webkit-slider-thumb,
 .volume_slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   width: 15px;
   height: 15px;
@@ -193,7 +191,7 @@ i.fa-heart:hover{
   opacity: 1;
 }
 
-.playList{
+.playList, .songList{
   background: black;
   z-index: 10;
   width: 325px;
@@ -206,7 +204,7 @@ i.fa-heart:hover{
   visibility: hidden;
 }
 
-.playList h1{
+.playList h1, .songList h1{
   font-size: 2rem;
   color: var(--purple);
   font-family: cursive;
@@ -219,12 +217,12 @@ i.close{
   font-size: 2rem;
 }
 
-.playItem{
+.playItem, .songItem{
   margin: 1.5em;
   color: var(--white);
 }
 
-.play-track-name{
+.play-track-name, .song-track-name{
   font-size: 1.5rem;
   font-family: Arial, Helvetica, sans-serif;
   padding: 0.8rem;
@@ -239,24 +237,71 @@ i.fa-xmark{
   color: var(--white);
 }
 
-.play-track-artist{
+.play-track-artist, .song-track-artist{
   font-size: 1rem;
   font-family: Arial, Helvetica, sans-serif;
   padding: 0 0 1rem 0.8rem;
 }
 
-.items{
+.items, .songs{
   max-height: 530px;
   border-radius: 10px;
   box-shadow: 2px 0px 53px 2px var(--purple);
   overflow-y: scroll;
-  
+
 }
 
 .items::-webkit-scrollbar{
   display: none;
 }
 
+.songs::-webkit-scrollbar{
+  display: none;
+}
+
 hr{
   border: 1px solid var(--purple);
+}
+
+i.fa-music{
+  padding-left: 2.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.popup{
+  background: black;
+  z-index: 10;
+  width: 180px;
+  height: 20px;
+  border-radius: 1.5em;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+}
+
+.popup p{
+  color: var(--white);
+  text-align: center;
+}
+
+@keyframes pop-out {
+  0% {
+    color: var(--blue);
+    transform: scale(0.5);
+    opacity: 0;
+  
+  }
+  50% {
+    color: var(--purple);
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
