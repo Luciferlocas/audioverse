@@ -31,8 +31,6 @@ let sitems = document.querySelector(".songs");
 let playtrack_name = document.querySelector(".play-track-name");
 let playtrack_artist = document.querySelector(".play-track-artist");
 
-let songtrack_name = document.querySelector(".song-track-name");
-let songtrack_artist = document.querySelector(".song-track-artist");
 let songAdded = document.querySelector(".popup");
 
 //array of tracks------------------------------------------------------
@@ -296,7 +294,7 @@ function playlistDisplay() {
   let List = "";
   playlistFilter.map(function (play) {
     List += `<div class="play-track-name">${(playtrack_name.textContent =
-      play.name)}</div>
+      play.name)}<span onclick ="removeplaylist()">Remove</span></div>
             <div class="play-track-artist">${(playtrack_artist.textContent =
               play.artist)}</div>
             <hr>`;
@@ -310,19 +308,19 @@ function songDisplay() {
     pclick = false;
     songItem.style.visibility = "visible";
   }
-  let Songs = "";
-  for (let i = 0; i < track_list.length; i++) {
-    Songs += `<div class="song-track-name" id = "${i}" onclick="displayName()">${(songtrack_name.textContent =
-      track_list[i].name)}</div>
-            <div class="song-track-artist">${(songtrack_artist.textContent =
-              track_list[i].artist)}</div>
-            <hr>`;
-  }
-  console.log(Songs);
-  sitems.innerHTML = Songs;
 }
 
-// function displayName() {
-//   let sindex = songtrack_name.getAttribute("id");
-//   console.log(sindex);
-// }
+let Songs = "";
+for (let i = 0; i < track_list.length; i++) {
+  Songs += `<div class="song-track-name" id = "${i}" onclick = "displayName(this)">${track_list[i].name}</div>
+            <div class="song-track-artist">${track_list[i].artist}</div>
+            <hr>`;
+}
+sitems.insertAdjacentHTML("beforeend", Songs);
+
+function displayName(element) {
+  let sindex = element.getAttribute("id");
+  track_index = sindex;
+  loadTrack(track_index);
+  playTrack();
+}
