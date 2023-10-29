@@ -149,25 +149,13 @@ function playPause(e) {
     } else {
       pauseTrack();
     }
+  } else if (e.keyCode === 39) {
+    nextTrack();
+  } else if (e.keyCode === 37){
+    prevTrack();
   }
 }
-document.addEventListener("keypress", playPause);
-
-function next(t) {
-  if (t.keyCode !== 39) {
-    return;
-  }
-  nextTrack();
-}
-document.addEventListener("keydown", next);
-
-function Prev(s) {
-  if (s.keyCode !== 37) {
-    return;
-  }
-  prevTrack();
-}
-document.addEventListener("keyup", Prev);
+document.addEventListener("keyup", playPause);
 
 //next button -----------------------------------------------------------
 
@@ -318,9 +306,11 @@ for (let i = 0; i < track_list.length; i++) {
 }
 sitems.insertAdjacentHTML("beforeend", Songs);
 
+//playing song onclick -----------------------------------------------------------
+
 function displayName(element) {
-  let sindex = element.getAttribute("id");
-  track_index = sindex;
-  loadTrack(track_index);
+  let sindex = Number(element.getAttribute("id"));
+  track_index = Math.ceil(Math.random() * 11);
+  loadTrack(sindex);
   playTrack();
 }
