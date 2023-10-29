@@ -310,7 +310,7 @@ sitems.insertAdjacentHTML("beforeend", Songs);
 
 function displayName(element) {
   let sindex = Number(element.getAttribute("id"));
-  track_index = Math.ceil(Math.random() * 11);
+  track_index = sindex;
   loadTrack(sindex);
   playTrack();
 }
